@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * <name:何思源 ID:24307090024>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -146,7 +146,9 @@ NOTES:
  *   Rating: 1
  */
 int signMask(void) {
-  return 1;
+  int rusult;
+  rusult =(8 << 28);
+  return rusult;
 }
 
 // P2
@@ -158,7 +160,11 @@ int signMask(void) {
  *   Rating: 2
  */
 int bitXor(int x, int y) {
-	return 2;
+  int A = (~x)&y;
+  int B = (~y)&x;
+  int C = (~A)&(~B);
+  int result = (~C);
+	return result;
 }
 
 // P3
@@ -170,7 +176,9 @@ int bitXor(int x, int y) {
  *   Rating: 3
  */
 int negativePart(int x){
-  return 3;
+  int flag = x >> 31;
+  int result = flag&(~x+1);
+  return result;
 }
 
 
@@ -185,7 +193,16 @@ int negativePart(int x){
  *   Rating: 4
  */
 int copyByteWithin(int x, int src, int dst) {
-  return 4;
+  int A = x >> (src << 3);
+  int B = A & 255;
+
+  int C = 255 << (dst << 3);
+  int D = ~C;
+  int C_1 = x & D;
+
+  int B_1 = B << (dst << 3);
+  int result = B_1 | C_1;
+  return result;
 }
 
 // P5
@@ -198,7 +215,13 @@ int copyByteWithin(int x, int src, int dst) {
  *   Rating: 4
  */
 int logicalShift(int x, int n) {
-  return 5;
+  int A = x >> n;
+  int mask = 1 << 31;
+  int mask_1 = mask >> n;
+  int mask_2 = ~mask_1;
+  int mask_3 = (mask_2 << 1) + 1;
+  int result = mask_3 & A;
+  return result; 
 }
 
 // P6
